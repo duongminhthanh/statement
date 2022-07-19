@@ -1,0 +1,151 @@
+<div class="container-fluid">
+  <app-page-title title="Data Management" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="col-12 card-box">
+        <fieldset class="{{!isCollapsed ? 'pb-0' : ''}}">
+          <legend>
+            <a href="javascript: void(0);" (click)="isCollapsed = !isCollapsed">Search Information
+              <i class="{{isCollapsed ? 'fe-minus' : 'fe-plus'}} ml-1" aria-hidden="true"></i>
+            </a>
+          </legend>
+          <div *ngIf="isCollapsed">
+            <div class="row mb-2">
+              <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1" id="selectTypeLog">
+                <label for="" class="font-weight-bolder">CustomerID</label>
+                <ng-select>
+                  <ng-option>All</ng-option>
+                  <ng-option>Work</ng-option>
+                  <ng-option>Excel</ng-option>
+                </ng-select>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+                <label for="" class="font-weight-bolder">Customer Name</label>
+                <input type="text" class="form-control" placeholder="Search...">
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+                <label for="" class="font-weight-bolder">Status</label>
+                <ng-select>
+                  <ng-option>All</ng-option>
+                  <ng-option>Uploaded</ng-option>
+                  <ng-option>Imported</ng-option>
+                  <ng-option>Import falsed</ng-option>
+                </ng-select>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+                <label for="" class="font-weight-bolder">Statement Code</label>
+                <ng-select>
+                  <ng-option>All</ng-option>
+                  <ng-option>Work</ng-option>
+                  <ng-option>Excel</ng-option>
+                </ng-select>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+                <label for="" class="font-weight-bolder">Statement Name</label>
+                <input type="text" class="form-control" placeholder="Search...">
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+                <label for="" class="font-weight-bolder">Date</label>
+                <div class="input-group clockpicker">
+                  <input ngbDatepicker class="form-control" autoClose="false" placeholder="yyyy-mm-dd"
+                    #date="ngbDatepicker">
+                  <div class="input-group-append" (click)="date.toggle()">
+                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-7 text-left">
+              <!-- <button type="button" class="btn btn-primary mr-1 mt-1">
+                <i class="fas fa-upload mr-1"></i>Upload
+              </button>
+              <button type="button" class="btn btn-primary mr-1 mt-1">
+                <i class="fas fa-file-import mr-1"></i>Import
+              </button>
+              <button type="button" class="btn btn-primary mt-1 mr-1">
+                <i class="fas fa-file mr-1"></i>View log
+              </button> -->
+            </div>
+            <div class="col-5 text-right">
+              <button type="button" class="btn btn-primary mr-1 mt-1">
+                  <i class="fas fa-undo-alt mr-1"></i>Refresh
+              </button>
+              <button type="button" class="btn btn-primary mt-1 mr-1"><i
+                      class="fas fa-search mr-1"></i>Search
+              </button>
+            </div>
+          </div>
+        </div>
+        </fieldset>
+        <div class="col-12 border-bottom-dotted pb-0 p-0 mb-2 mt-3">
+          <span class="font-weight-medium theme-color">Transaction list</span>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-sm table-hover m-w-tabble">
+                <thead>
+                    <tr class="m-header-table">
+                      <th class="text-center align-middle">No.</th>
+                      <th class="text-center align-middle m-min-w-5-5">Transaction</th>
+                      <th class="text-center align-middle m-min-w-5-5">Header 2</th>
+                      <th class="text-center align-middle">Header 3</th>
+                      <th class="text-center align-middle m-min-w-5-5">Header 4</th>
+                      <th class="text-center align-middle m-min-w-2-5">Header 5</th>
+                      <th class="text-center align-middle m-min-w-2-5">Header 6</th>
+                      <th class="text-center align-middle m-min-w-2-5">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                      <td class="text-center align-middle" colspan="8">No data</td>
+                    </tr> -->
+                    <tr>
+                      <td class="align-middle">1</td>
+                      <td class="align-middle">Transaction 1</td>
+                      <td class="align-middle"></td>
+                      <td class="align-middle"></td>
+                      <td class="align-middle text-center"></td>
+                      <td class="text-center text-danger align-middle"></td>
+                      <td class="text-center text-danger align-middle"></td>
+                      <td class="align-middle text-center">
+                        <span class="text-info"><i class="fas fa-pencil-alt"></i></span>
+                        <span class="text-danger ml-1"><i class="far fa-trash-alt"></i></span>
+                        <span class="text-dark ml-1"><i class="fas fa-search mr-1"></i></span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="align-middle">2</td>
+                      <td class="align-middle">Transaction 2</td>
+                      <td class="align-middle"></td>
+                      <td class="align-middle"></td>
+                      <td class="align-middle text-center"></td>
+                      <td class="text-center text-danger align-middle"></td>
+                      <td class="text-center text-danger align-middle"></td>
+                      <td class="align-middle text-center">
+                        <span class="text-info"><i class="fas fa-pencil-alt"></i></span>
+                        <span class="text-danger ml-1"><i class="far fa-trash-alt"></i></span>
+                        <span class="text-dark ml-1"><i class="fas fa-search mr-1"></i></span>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td class="align-middle">3</td>
+                      <td class="align-middle">Transaction 3</td>
+                      <td class="align-middle"></td>
+                      <td class="align-middle"></td>
+                      <td class="align-middle text-center"></td>
+                      <td class="text-center text-danger align-middle"></td>
+                      <td class="text-center text-danger align-middle"></td>
+                      <td class="align-middle text-center">
+                        <span class="text-info"><i class="fas fa-pencil-alt"></i></span>
+                        <span class="text-danger ml-1"><i class="far fa-trash-alt"></i></span>
+                        <span class="text-dark ml-1"><i class="fas fa-search mr-1"></i></span>
+                      </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

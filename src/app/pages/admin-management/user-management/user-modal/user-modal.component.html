@@ -1,0 +1,91 @@
+<div class="modal-header align-middle">
+    <h4 id="modal-title">{{title}} User</h4>
+    <button (click)="activeModal.dismiss('Cross click')" aria-describedby="modal-title" class="close" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <app-ui-preloader [display]="loading"></app-ui-preloader>
+    <form [formGroup]="form" id="form-1">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 form-group">
+                <label class="font-weight-bolder">User code <span class="text-danger">*</span></label>
+                <input [ngClass]="{ 'is-invalid': (isSubmit && f.code.errors) || userCodeHasUse === 'UserCode'}"
+                       class="form-control" formControlName="code" placeholder="Enter user code"
+                       type="text"/>
+                       
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+                <label class="font-weight-bolder">Full name <span class="text-danger">*</span></label>
+                <input [ngClass]="{ 'is-invalid': (isSubmit && f.fullName.errors) || userCodeHasUse === 'Name'}"
+                       class="form-control" formControlName="fullName" placeholder="Enter full name"
+                       type="text"/>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="form-group">
+                    <label class="font-weight-bolder">Birthday <span class="text-danger">*</span></label>
+                    <div class="input-group clockpicker">
+                        <input #date="ngbDatepicker" autoClose="false" class="form-control" formControlName="birthday"
+                               ngbDatepicker placeholder="dd-mm-yyyy">
+                        <div (click)="date.toggle()" class="input-group-append">
+                            <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+                <label class="font-weight-bolder">Phone no. <span class="text-danger">*</span></label>
+                <input [ngClass]="{ 'is-invalid': (isSubmit && f.phoneNo.errors) || userCodeHasUse === 'PhoneNo'}"
+                       class="form-control" formControlName="phoneNo" placeholder="Enter phone no"
+                       type="number"/>
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+                <label class="font-weight-bolder">Email <span class="text-danger">*</span></label>
+                <input [ngClass]="{ 'is-invalid': (isSubmit && f.email.errors) || userCodeHasUse === 'Email'}"
+                       class="form-control" formControlName="email" placeholder="Enter email"
+                       type="text"/>
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+                <label class="font-weight-bolder">Department <span class="text-danger">*</span></label>
+                <div>
+                    <ng-select [items]="departmentList" [placeholder]="'Select'" bindLabel="name"
+                               bindValue="code" formControlName="departmentCode">
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+                <label class="font-weight-bolder">Group <span class="text-danger">*</span></label>
+                <div>
+                    <ng-select [items]="groupList" [placeholder]="'Select'" bindLabel="name"
+                               bindValue="code" formControlName="groupCode">
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 form-group">
+                <label class="font-weight-bolder">Unit <span class="text-danger">*</span></label>
+                <div>
+                    <ng-select [items]="unitList" [placeholder]="'Select'" bindLabel="name"
+                               bindValue="code" formControlName="unitCode">
+                    </ng-select>
+                </div>
+            </div>
+            <!--            <div class="col-sm-12 col-md-6 form-group">-->
+            <!--                <div class="form-check">-->
+            <!--                    <input class="form-check-input" formControlName="status" id="gridCheck" type="checkbox">-->
+            <!--                    <label class="form-check-label" for="gridCheck">-->
+            <!--                        Active-->
+            <!--                    </label>-->
+            <!--                </div>-->
+            <!--            </div>-->
+        </div>
+    </form>
+
+</div>
+<div class="modal-footer">
+    <button (click)="reset()" class="btn btn-secondary" data-dismiss="modal" type="button">
+        <i class="fas fa-times mr-1"></i>Cancel
+    </button>
+    <button (debounceClick)="submit()" appDebounceClick class="btn btn-primary" type="button">
+        <i class="fas fa-check mr-1"></i>Save
+    </button>
+</div>

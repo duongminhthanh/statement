@@ -1,0 +1,184 @@
+<div class="container-fluid">
+    <app-ui-preloader [display]="loading"></app-ui-preloader>
+    <app-page-title [breadcrumbItems]="breadCrumbItems" title="Import Data"></app-page-title>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="col-12 card-box">
+                <fieldset class="{{!isCollapsed ? 'pb-0' : ''}}">
+                    <legend>
+                        <a (click)="isCollapsed = !isCollapsed" href="javascript: void(0);">Search Information
+                            <i aria-hidden="true" class="{{isCollapsed ? 'fe-minus' : 'fe-plus'}} ml-1"></i>
+                        </a>
+                    </legend>
+                    <form (ngSubmit)="search()" *ngIf="isCollapsed" [formGroup]="searchFileListForm">
+                        <div class="row mb-2">
+                            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1" id="selectTypeLog">
+                                <label class="font-weight-bolder">File Type</label>
+                                <ng-select formControlName="fileType">
+                                    <ng-option [value]="''">All</ng-option>
+                                    <ng-option [value]="'word'">Word</ng-option>
+                                    <ng-option [value]="'excel'">Excel</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+                                <label class="font-weight-bolder">Status</label>
+                                <ng-select formControlName="status">
+                                    <ng-option [value]="''">All</ng-option>
+                                    <ng-option [value]="'uploaded'">Uploaded</ng-option>
+                                    <ng-option [value]="'imported'">Imported</ng-option>
+                                    <ng-option [value]="'import falsed'">Import falsed</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+                                <label class="font-weight-bolder">Transaction Date</label>
+                                <div class="input-group clockpicker">
+                                    <input #date="ngbDatepicker" autoClose="false" class="form-control"
+                                        formControlName="transactionDate" ngbDatepicker placeholder="yyyy-mm-dd">
+                                    <div (click)="date.toggle()" class="input-group-append">
+                                        <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+                                <label class="font-weight-bolder">Keyword</label>
+                                <input class="form-control" formControlName="searchKey" placeholder="Search..."
+                                    type="text">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-7 text-left">
+                                <button (click)="exportAsXLSX(pdfDataModal)" [disabled]="checked === null"
+                                    class="btn btn-primary mr-1 mt-1" type="button">
+                                    <i class="fas fa-cloud-download-alt mr-1"></i>
+                                    Export
+                                </button>
+                                <span class="btn btn-primary btn-file m-cursor mr-1 mt-1">
+                                    <input #bankStatementFileImport (change)="onFileSelect($event)"
+                                        [accept]="fileType.EXCEL" [multiple]="false" type="file" />
+                                    <i class="fas fa-cloud-upload-alt mr-1"></i>
+                                    Import
+                                </span>
+                                <button class="btn btn-primary mt-1 mr-1" type="button">
+                                    <i class="fas fa-file mr-1"></i>View log
+                                </button>
+                            </div>
+                            <div class="col-5 text-right">
+                                <!--                                 <button *ngIf="isCheckedAll && totalSize > 0 && totalSize > pageSize" type="button"-->
+                                <!--                                    class="btn btn-danger mr-1" (click)="deleteAllLogLimit()">-->
+                                <!--                                    <i class="far fa-trash-alt"></i> {{'deal_management_label.xoa_tat_ca' | translate}} {{"(" +-->
+                                <!--                                    totalSize + ")"}}-->
+                                <!--                                </button>-->
+                                <!--                                <button *ngIf="totalChecked > 0" type="button" class="btn btn-danger mr-1" (click)="deleteLogList()">-->
+                                <!--                                    <i class="far fa-trash-alt"></i> {{'deal_management_label.xoa' | translate}} {{totalSize ? "(" +-->
+                                <!--                                    totalChecked + ")" : ''}}-->
+                                <!--                                </button> -->
+
+                                <button (click)="initFormSearch()" class="btn btn-primary mr-1 mt-1" type="button">
+                                    <i class="fas fa-undo-alt mr-1"></i>Refresh
+                                </button>
+                                <button class="btn btn-primary mt-1 mr-1" type="submit"><i
+                                        class="fas fa-search mr-1"></i>Search
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+                <div class="col-12 border-bottom-dotted pb-0 p-0 mb-2 mt-3">
+                    <span class="font-weight-medium theme-color">File list</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm table-hover m-w-tabble">
+                        <thead>
+                            <tr class="m-header-table">
+                                <th class="text-center align-middle">
+                                    <!--                                <div class="custom-control custom-checkbox  text-center align-middle">-->
+                                    <!--                                    <input class="custom-control-input m-cursor" id="checkAll" type="checkbox">-->
+                                    <!--                                    <label class="custom-control-label m-cursor" for="checkAll"></label>-->
+                                    <!--                                </div>-->
+                                </th>
+                                <th class="text-center align-middle">File name</th>
+                                <th class="text-center align-middle m-min-w-5-5">File type</th>
+                                <th class="text-center align-middle m-min-w-5-5">Transaction date</th>
+                                <th class="text-center align-middle">Status</th>
+                                <th class="text-center align-middle m-min-w-5-5">Imported rows</th>
+                                <th class="text-center align-middle m-min-w-2-5">Upload user</th>
+                                <th class="text-center align-middle m-min-w-2-5">Execution user</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="!fileList || fileList.length <= 0">
+                                <td class="text-center align-middle" colspan="10">No data</td>
+                            </tr>
+                            <tr *ngFor="let item of fileList; let i = index">
+                                <td class="text-center">
+                                    <div class="custom-control custom-checkbox align-middle">
+                                        <input (change)="changeCheckList(i, $event, item)"
+                                            [disabled]="checked !== i && checked !== null" [id]="i"
+                                            class="custom-control-input" type="checkbox">
+                                        <label [for]="i" class="custom-control-label m-cursor"></label>
+                                    </div>
+                                </td>
+                                <td class="align-middle">{{item.fileName}}</td>
+                                <td class="align-middle">{{item.fileType}}</td>
+                                <td class="align-middle">{{item.createdDate | date: 'dd/MM/yyyy'}}</td>
+                                <td class="align-middle">{{item.status}}</td>
+                                <td class="align-middle text-center">1/1</td>
+                                <td class="text-center text-danger align-middle">{{item.creater | getLabelByIdInArray:
+                                    userList: 'code': 'fullName'}}</td>
+                                <td class="text-center text-danger align-middle">{{item.creater | getLabelByIdInArray:
+                                    userList: 'code': 'fullName'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #pdfDataModal let-modal="close">
+    <div class="modal-header">
+        <h4 class="modal-title">PDF</h4>
+        <button (click)="modal('Cross click')" aria-label="Close" class="close" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <pdf-viewer *ngIf="pdfSrc" [original-size]="false" [render-text]="true" [src]="pdfSrc"></pdf-viewer>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary waves-effect ml-1 mb-1" (click)="openModalSign(signModal)">
+            <i class="fas fa-save"></i> Ký số</button>
+        <button type="button" class="btn btn-secondary waves-effect ml-1 mb-1" (click)="closePopup()">
+            <i class="fas fa-times"></i> Đóng</button>
+    </div>
+</ng-template>
+<ng-template #signModal let-modal="close">
+    <div class="modal-header">
+        <h4 class="modal-title">Đính kèm chữ Ký</h4>
+        <button (click)="modal('Cross click')" aria-label="Close" class="close" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="col-12">
+            <div class="input-group">
+                <input type="text" placeholder="Chọn chữ ký" class="form-control bg-white" [(ngModel)]="fileName" readonly>
+                <div class="input-group-append input-group-append-custom">
+                    <label for="upload">
+                        <span><i class="m-cursor fas fa-cloud-upload-alt text-white pt-1"></i></span>
+                        <input (change)="uploadFile()" type="file" style="display:none" id="upload">
+                    </label>
+                </div>
+            </div>
+            <img *ngIf="fileUpload" [src]="fileUpload" style="width: 246px;"/>
+        </div>
+    </div>
+    <div class="modal-footer text-center" style="justify-content: center;">
+        <button type="button" class="btn btn-primary waves-effect" (click)="signiture()">
+            <i class="fas fa-save"></i> Ký</button>
+    </div>
+</ng-template>

@@ -1,0 +1,170 @@
+<div class="container-fluid">
+	<app-page-title title="Define Report" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+	<div class="row">
+	  <div class="col-12">
+		<div class="col-12 card-box">
+		  <fieldset class="{{!isCollapsed ? 'pb-0' : ''}}">
+			<legend>
+			  <a href="javascript: void(0);" (click)="isCollapsed = !isCollapsed">Search Information
+				<i class="{{isCollapsed ? 'fe-minus' : 'fe-plus'}} ml-1" aria-hidden="true"></i>
+			  </a>
+			</legend>
+			<div *ngIf="isCollapsed">
+			  <div class="row mb-2">
+				<div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 mt-1" id="selectTypeLog">
+				  <label for="" class="font-weight-bolder">Type</label>
+				  <ng-select>
+					<ng-option>All</ng-option>
+					<ng-option>Template Report</ng-option>
+					<ng-option>Text Report</ng-option>
+					<ng-option>Chart Report</ng-option>
+				  </ng-select> 
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 mt-1" id="selectTypeLog">
+					<label for="" class="font-weight-bolder">Group</label>
+					<ng-select>
+					  <ng-option>All</ng-option>
+					  <ng-option>Circular 41</ng-option>
+					  <ng-option>Circular 11</ng-option>
+					  <ng-option>CIC</ng-option>
+					  <ng-option>AML</ng-option>
+					  <ng-option>DIV</ng-option>
+					  <ng-option>OTH</ng-option>
+					  <ng-option>OD2970</ng-option>
+					</ng-select> 
+				  </div>
+				<div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 mt-1">
+				  <label for="" class="font-weight-bolder">Term</label>
+				 <ng-select>
+					<ng-option>All</ng-option>
+					<ng-option>Daily</ng-option>
+					<ng-option>Thrice-Monthly</ng-option>
+					<ng-option>Half-Monthly</ng-option>
+					<ng-option>Monthly</ng-option>
+					<ng-option>Quaterly</ng-option>
+					<ng-option>Mid-Year</ng-option>
+					<ng-option>Yearly</ng-option>
+					<ng-option>AdHoc</ng-option>
+					<ng-option>Weekly</ng-option>
+					<ng-option>Half-Yearly</ng-option>
+				  </ng-select>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 mt-1">
+				  <label for="" class="font-weight-bolder">File name</label>
+				  <ng-select>
+					<ng-option>All</ng-option>
+					<ng-option>Daily</ng-option>
+					<ng-option>Thrice-Monthly</ng-option>
+					<ng-option>Half-Monthly</ng-option>
+					<ng-option>Monthly</ng-option>
+					<ng-option>Quaterly</ng-option>
+					<ng-option>Mid-Year</ng-option>
+					<ng-option>Yearly</ng-option>
+					<ng-option>AdHoc</ng-option>
+					<ng-option>Weekly</ng-option>
+					<ng-option>Half-Yearly</ng-option>
+				  </ng-select>
+				</div>
+				<div class="col-sm-12 mt-1">
+				  <label for="" class="font-weight-bolder">Keyword</label>
+				  <input type="text" class="form-control" placeholder="Search...">
+			  </div>
+			</div>
+			<div class="row">
+				<div class="col-7 text-left">
+				  <button type="button" class="btn btn-primary mr-1 mt-1">
+					<i class="fas fa-upload mr-1"></i>New Report
+				  </button>
+				  <!-- <button class="btn btn-primary mr-1 mt-1" id="gfg" 
+						ngbDropdownToggle><i class="fas fa-regular fa-file-signature mr-1"></i>Review
+					</button>
+						<div ngbDropdownMenu="gfg">
+							<button ngbDropdownItem>
+								<i class="fas fa-regular fa-check-double mr-1"></i>Approve
+							</button>
+							<button ngbDropdownItem>
+								<i class="fas fa-regular fa-ban mr-1"></i>Reject
+							</button>
+						</div> -->
+				</div>
+				<div class="col-5 text-right">
+					<!-- <button type="button" class="btn btn-primary mr-1 mt-1">
+						<i class="fas fa-undo-alt mr-1"></i>Refresh
+					</button> -->
+					<button type="button" class="btn btn-primary mt-1 mr-1"><i
+							class="fas fa-search mr-1"></i>Search
+					</button>
+				</div>
+			</div>
+			</div>
+		  </fieldset>
+		  <div class="col-12 border-bottom-dotted pb-0 p-0 mb-2 mt-3">
+			<span class="font-weight-medium theme-color">File list</span>
+		  </div>
+		  <div class="table-responsive">
+			  <table class="table table-bordered table-sm table-hover m-w-tabble">
+				  <thead>
+					  <tr class="m-header-table">
+						  <th class="text-center align-middle">Actions</th>
+						  <th class="text-center align-middle m-min-w-5-5">File mask</th>
+						  <th class="text-center align-middle m-min-w-5-5">File type</th>
+						  <th class="text-center align-middle">Term</th>
+						  <th class="text-center align-middle m-min-w-5-5">Group</th>
+						  <th class="text-center align-middle m-min-w-2-5">Table Name</th>
+						  <th class="text-center align-middle m-min-w-2-5">Description</th>
+						  <th class="text-center align-middle">Last modified</th>
+					  </tr>
+				  </thead>
+				  <tbody>
+					  <tr>
+						  <td class="text-center">
+							  <div class="custom-control custom-checkbox align-middle">
+								  <input type="checkbox" class="custom-control-input">
+								  <label class="custom-control-label m-cursor"></label>
+							  </div>
+						  </td>
+						  <td class="align-middle">VNMQVBILL</td>
+						  <td class="align-middle">excel</td>
+						  <td class="align-middle">15/01/2022</td>
+						  <td class="align-middle">Uploaded</td>
+						  <td class="align-middle text-center">0/0</td>
+						  <td class="text-center text-danger align-middle"></td>
+						  <td class="text-center text-danger align-middle"></td>
+					  </tr>
+					  <tr>
+						<td class="text-center">
+							<div class="custom-control custom-checkbox align-middle">
+								<input type="checkbox" class="custom-control-input">
+								<label class="custom-control-label m-cursor"></label>
+							</div>
+						</td>
+						<td class="align-middle">VNMQVBILL</td>
+						<td class="align-middle">excel</td>
+						<td class="align-middle">15/01/2022</td>
+						<td class="align-middle">Uploaded</td>
+						<td class="align-middle text-center">0/0</td>
+						<td class="text-center text-danger align-middle"></td>
+						<td class="text-center text-danger align-middle"></td>
+					</tr>
+					<tr>
+					  <td class="text-center">
+						  <div class="custom-control custom-checkbox align-middle">
+							  <input type="checkbox" class="custom-control-input">
+							  <label class="custom-control-label m-cursor"></label>
+						  </div>
+					  </td>
+					  <td class="align-middle">VNMQVBILL</td>
+					  <td class="align-middle">excel</td>
+					  <td class="align-middle">15/01/2022</td>
+					  <td class="align-middle">Uploaded</td>
+					  <td class="align-middle text-center">0/0</td>
+					  <td class="text-center text-danger align-middle"></td>
+					  <td class="text-center text-danger align-middle"></td>
+				  </tr>
+				  </tbody>
+			  </table>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>

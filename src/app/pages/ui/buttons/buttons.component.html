@@ -1,0 +1,318 @@
+<div class="container-fluid">
+    <app-page-title title="Buttons" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <h4 class="header-title">Default Buttons</h4>
+                <p class="text-muted font-13">Use the button classes on an <code>&lt;a&gt;</code>,
+                    <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+
+                <div class="button-list">
+                    <button type="button" *ngFor="let button of buttonData"
+                        class="btn btn-{{ button.color }} waves-effect waves-light">{{ button.name }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <h4 class="header-title">Button-Rounded</h4>
+                <p class="text-muted font-13">Add <code>.btn-rounded</code> to default button to get rounded corners.
+                </p>
+
+                <div class="button-list">
+                    <button type="button" *ngFor="let button of buttonData"
+                        class="btn btn-{{button.color}} btn-rounded width-md waves-effect waves-light">{{button.name}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <h4 class="header-title">Button Bordered</h4>
+                <p class="text-muted font-13">Use a classes <code>.btn-bordered-*</code> to quickly create a bordered
+                    buttons.</p>
+
+                <div class="button-list">
+                    <button type="button" *ngFor="let button of buttonData"
+                        class="btn btn-bordered-{{button.color}} waves-effect width-md waves-light">{{button.name}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-box">
+                <h4 class="header-title">Outline buttons</h4>
+                <p class="text-muted font-13">In need of a button, but not the hefty
+                    background colors they bring? Replace the default modifier classes with the
+                    <code>.btn-outline-*</code> ones to remove all
+                    background images and colors on any button.</p>
+
+                <div class="button-list">
+                    <button type="button" *ngFor="let button of buttonData"
+                        class="btn btn-outline-{{button.color}} waves-effect waves-light">{{button.name}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card-box">
+                <h4 class="header-title">Button Width</h4>
+                <p class="text-muted font-13">
+                    Create buttons with minimum width by adding add <code>.width-xs</code>, <code>.width-sm</code>,
+                    <code>.width-md</code> or <code>.width-lg</code>.
+                </p>
+                <div class="button-list">
+                    <button type="button" class="btn btn-primary waves-effect waves-light width-xs">Xs</button>
+                    <button type="button" class="btn btn-success waves-effect waves-light width-sm">Small</button>
+                    <button type="button" class="btn btn-info waves-effect waves-light width-md">Middle</button>
+                    <button type="button" class="btn btn-warning waves-effect waves-light width-lg">Large</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card-box">
+                <h4 class="header-title">Button Sizes</h4>
+                <p class="text-muted font-13">
+                    Add <code>.btn-lg</code>, <code>.btn-sm</code> for additional sizes.
+                </p>
+
+                <div class="button-list">
+                    <button class="btn btn-primary waves-effect waves-light btn-lg">Large button</button>
+                    <button class="btn btn-danger waves-effect waves-light">Normal button</button>
+                    <button class="btn btn-success waves-effect waves-light btn-sm">Small button</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-box">
+                <h4 class="header-title">Button Disabled</h4>
+                <p class="text-muted font-13">
+                    Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.
+                </p>
+
+                <div class="button-list">
+                    <button class="btn btn-info disabled m-b-5">Info</button>
+                    <button class="btn btn-success disabled m-b-5">Purple</button>
+                    <button class="btn btn-pink disabled m-b-5">Pink</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card-box">
+                <h4 class="header-title">Icon Button</h4>
+                <p class="text-muted font-13">
+                    Icon only button.
+                </p>
+
+                <div class="button-list">
+                    <button *ngFor="let button of iconData" class="btn btn-icon waves-effect btn-{{button.color}}"> <i
+                            class="{{button.name}}"></i> </button>
+                </div>
+                <div class="button-list">
+                    <button *ngFor="let button of iconButton" class="btn btn-{{button.color}} waves-effect"> <i
+                            class="{{button.icon}} mr-1"></i>{{ button.name }}</button>
+                </div>
+            </div>
+            <div class="card-box">
+                <h4 class="header-title">Block Button</h4>
+                <p class="text-muted font-13">
+                    Create block level buttons,with by adding add <code>.btn-block</code>.
+                </p>
+                <div class="button-list">
+                    <button type="button" class="btn btn-block btn--md btn-primary waves-effect waves-light">Block
+                        Button</button>
+                    <button type="button" class="btn btn-block btn-sm btn-success waves-effect waves-light">Block
+                        Button</button>
+                    <button type="button" class="btn btn-block btn-xs btn-info waves-effect waves-light">Block
+                        Button</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card-box">
+                <h4 class="header-title">Button Group</h4>
+                <p class="text-muted font-13">
+                    Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.
+                </p>
+
+                <div class="btn-group mb-1">
+                    <div class="btn-group btn-group-toggle">
+                        <label class="btn btn-secondary waves-effect" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="model.left"> Left
+                        </label>
+                        <label class="btn btn-secondary waves-effect" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="model.middle"> Middle
+                        </label>
+                        <label class="btn btn-secondary waves-effect" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="model.right"> Right
+                        </label>
+                    </div>
+                </div>
+                <br>
+                <div class="btn-group mb-1">
+                    <div class="btn-group btn-group-toggle">
+                        <label class="btn btn-secondary waves-effect" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="btnmodel.first"> 1</label>
+                        <label class="btn btn-secondary waves-effect" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="btnmodel.second"> 2</label>
+                        <label class="btn btn-secondary waves-effect" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="btnmodel.third"> 3</label>
+                        <label class="btn btn-secondary waves-effect" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="btnmodel.forth"> 4</label>
+                    </div>
+                </div>
+                <br>
+                <div class="btn-group mb-1">
+                    <div class="btn-group btn-group-toggle">
+                        <label class="btn btn-secondary waves-effect" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="btngroup.first">1</label>
+                        <label class="btn btn-secondary waves-effect" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="btngroup.second">2</label>
+                        <label class="btn btn-secondary waves-effect" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="btngroup.third">3</label>
+                        <div class="btn-group" ngbDropdown>
+                            <label class="btn btn-secondary waves-effect" ngbButtonLabel>
+                                <input type="checkbox" ngbButton [(ngModel)]="btngroup.drop" data-toggle="dropdown"
+                                    ngbDropdownToggle aria-expanded="false"> Dropdown <i
+                                    class="mdi mdi-chevron-down"></i></label>
+                            <div class="dropdown-menu" ngbDropdownMenu>
+                                <a class="dropdown-item" href="javascript: void(0);">Dropdown link</a>
+                                <a class="dropdown-item" href="javascript: void(0);">Dropdown link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="btn-group-vertical mb-1">
+                            <button type="button" class="btn btn-secondary waves-effect">Top</button>
+                            <button type="button" class="btn btn-secondary waves-effect">Middle</button>
+                            <button type="button" class="btn btn-secondary waves-effect">Bottom</button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="btn-group-vertical mb-1" ngbDropdown>
+                            <button type="button" class="btn btn-secondary waves-effect">Button 1</button>
+                            <button type="button" class="btn btn-secondary waves-effect">Button 2</button>
+                            <button type="button" class="btn btn-secondary dropdown-toggle waves-effect"
+                                data-toggle="dropdown" ngbDropdownToggle aria-expanded="false"> Button 3 <i
+                                    class="mdi mdi-chevron-down"></i></button>
+                            <div class="dropdown-menu" ngbDropdownMenu>
+                                <a class="dropdown-item" href="javascript: void(0)">Dropdown link</a>
+                                <a class="dropdown-item" href="javascript: void(0)">Dropdown link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card-box">
+                <h4 class="header-title">Dropdown</h4>
+                <p class="text-muted font-13">
+                    Turn a button into a dropdown toggle with some basic markup changes.
+                </p>
+
+                <ng-template [ngTemplateOutlet]="DropdownData" [ngTemplateOutletContext]="{button:button, index: idx}"
+                    *ngFor="let button of iconButton; let idx = index;"></ng-template>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card-box">
+                <h4 class="header-title">Split button dropdown</h4>
+                <p class="text-muted font-13">
+                    Turn a button into a dropdown toggle with some basic markup changes.
+                </p>
+
+                <div class="btn-group dropdown mt-1" ngbDropdown>
+                    <button type="button" class="btn btn-success waves-effect waves-light">Dropddown</button>
+                    <button type="button" class="btn btn-success dropdown-toggle waves-effect waves-light"
+                        data-toggle="dropdown" ngbDropdownToggle aria-expanded="false"><i
+                            class="mdi mdi-chevron-down"></i></button>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                        <a class="dropdown-item" href="javascript: void(0)">Dropdown link</a>
+                        <a class="dropdown-item" href="javascript: void(0)">Dropdown link</a>
+                    </div>
+                </div>
+                <div class="btn-group dropdown mt-1 ml-1" ngbDropdown>
+                    <button type="button" class="btn btn-primary waves-effect waves-light">Dropddown</button>
+                    <button type="button" class="btn btn-primary dropdown-toggle waves-effect waves-light"
+                        data-toggle="dropdown" ngbDropdownToggle aria-expanded="false"><i
+                            class="mdi mdi-chevron-down"></i></button>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                        <a class="dropdown-item" href="javascript: void(0)">Dropdown link</a>
+                        <a class="dropdown-item" href="javascript: void(0)">Dropdown link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card-box">
+                <h4 class="header-title">Dropup</h4>
+                <p class="text-muted font-13">
+                    Dropdown menus can be changed to expand upwards (instead of downwards) by adding
+                    <code>.dropup</code> to the parent.
+                </p>
+
+                <ng-template [ngTemplateOutlet]="DropdownUp" [ngTemplateOutletContext]="{button:button, index: idx}"
+                    *ngFor="let button of iconButton; let idx = index;"></ng-template>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card-box">
+                <h4 class="header-title">File upload buttons</h4>
+                <p class="text-muted font-13">
+                    Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or
+                    <code>&lt;input&gt;</code> element.
+                </p>
+
+                <div class="fileupload btn btn-primary waves-effect waves-light mt-1">
+                    <span>Upload</span>
+                    <input type="file" class="upload">
+                </div>
+                <div class="fileupload btn btn-secondary waves-effect mt-1 ml-1">
+                    <span><i class="mdi mdi-cloud-upload mr-1"></i>Upload</span>
+                    <input type="file" class="upload">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dropdown -->
+<ng-template #DropdownData let-button='button' let-index='index'>
+    <div ngbDropdown class="dropdown d-inline">
+        <button type="button" class="btn btn-{{button.color}} dropdown-toggle waves-effect ml-1" id="btn={index}"
+            ngbDropdownToggle> Dropdown <i class="mdi mdi-chevron-down"></i></button>
+        <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="btn={index}">
+            <a class="dropdown-item" href="javascript: void(0);">Dropdown link</a>
+            <a class="dropdown-item" href="javascript: void(0);">Dropdown link</a>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Dropdown Up -->
+<ng-template #DropdownUp let-button='button' let-index='index'>
+    <div ngbDropdown placement="top-left" class="dropup d-inline">
+        <button type="button" class="btn btn-{{button.color}} dropdown-toggle waves-effect ml-1" id="btn={index}"
+            ngbDropdownToggle> Dropup <i class="mdi mdi-chevron-up"></i></button>
+        <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="btn={index}">
+            <a class="dropdown-item" href="javascript: void(0);">Dropdown link</a>
+            <a class="dropdown-item" href="javascript: void(0);">Dropdown link</a>
+        </div>
+    </div>
+</ng-template>

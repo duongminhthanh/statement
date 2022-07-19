@@ -1,0 +1,140 @@
+<div class="container-fluid">
+  <app-page-title title="Deparment Management" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <div class="row">
+    <div class="col-12 card-box">
+      <fieldset class="{{!isCollapsed ? 'pb-0' : ''}}">
+        <legend>
+          <a href="javascript: void(0);" (click)="isCollapsed = !isCollapsed">Search Information
+            <i class="{{isCollapsed ? 'fe-minus' : 'fe-plus'}} ml-1" aria-hidden="true"></i>
+          </a>
+        </legend>
+        <form (ngSubmit)="search()" *ngIf="isCollapsed" [formGroup]="searchDepartmentForm">
+          <div class="row mb-2">
+              <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-1">
+                  <label class="col-form-label form-control-label font-weight-bolder">
+                      Department code
+                  </label>
+                  <div class="mt-1">
+                      <input class="form-control" formControlName="code" placeholder="Search..."
+                             type="text">
+                  </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-1">
+                  <label class="col-form-label form-control-label font-weight-bolder">
+                      Department name
+                  </label>
+                  <div class="mt-1">
+                      <input class="form-control" formControlName="name" placeholder="Search..."
+                             type="text">
+                  </div>
+              </div>
+              <!-- <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-1">
+                  <label class="col-form-label form-control-label font-weight-bolder">
+                      Unit
+                  </label>
+                  <div class="mt-1">
+                      <ng-select [items]="unitList" [placeholder]="'Select'" bindLabel="name"
+                                 bindValue="code" formControlName="unitCode">
+                      </ng-select>
+                  </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-1">
+                  <label class="col-form-label form-control-label font-weight-bolder">
+                      Status
+                  </label>
+                  <div class="mt-1">
+                      <ng-select [placeholder]="'Select'" formControlName="status">
+                          <ng-option [value]="-1">All</ng-option>
+                          <ng-option [value]="1">Active</ng-option>
+                          <ng-option [value]="0">Inactive</ng-option>
+                      </ng-select>
+                  </div>
+              </div> -->
+          </div>
+          <div class="row">
+              <div class="col-7 text-left">
+                  <span class="btn btn-primary btn-file m-cursor mr-1 mt-1">
+                      <input #departmentFileImport
+                             (change)="onFileSelect($event)"
+                             [accept]="fileType.EXCEL" [multiple]="false"
+                             type="file"/>
+                            <i class="fas fa-cloud-upload-alt mr-1"></i>
+                      Import
+                  </span>
+                  <button (click)="DowloadListDepartment('xlsx')" class="btn btn-primary mr-1 mt-1"
+                          type="button">
+                      <i class="fas fa-cloud-download-alt mr-1"></i>
+                      Export
+                  </button>
+                  <button (click)="openCreateModal(null)" class="btn btn-primary mt-1 mr-1" type="button">
+                      <i class="fas fa-plus mr-1"></i>Create
+                  </button>
+              </div>
+              <div class="col-5 text-right">
+
+                  <button (click)="initFormSearch()" class="btn btn-secondary mr-1 mt-1" type="button">
+                      <i class="fas fa-undo-alt mr-1"></i>Refresh
+                  </button>
+                  <button class="btn btn-primary mt-1" type="submit">
+                      <i class="fas fa-search mr-1"></i>Search
+                  </button>
+              </div>
+          </div>
+      </form>
+      </fieldset>
+      <div class="col-12 border-bottom-dotted pb-0 p-0 mb-2 mt-3">
+        <span class="font-weight-medium theme-color">Department list</span>
+      </div>
+      <div class="table-responsive">
+        <app-ui-preloader [display]="loading"></app-ui-preloader>
+        <table class="table table-bordered table-sm table-hover m-w-tabble">
+          <thead>
+            <tr class="m-header-table">
+              <th class="text-center align-middle">
+                <div class="custom-control custom-checkbox  text-center align-middle">
+                  <input type="checkbox" class="custom-control-input m-cursor" id="checkAll">
+                  <label class="custom-control-label m-cursor" for="checkAll"></label>
+                </div>
+              </th>
+              <th class="text-center align-middle">Department code</th>
+              <th class="text-center align-middle">Name</th>
+              <th class="text-center align-middle">English Name</th>
+              <th class="text-center align-middle">Creater</th>
+              <th class="text-center align-middle">Create date</th>
+              <th class="text-center align-middle">Unit</th>
+              <th class="text-center align-middle">Status</th>
+              <th class="text-center align-middle">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="!departmentList || departmentList.length <= 0">
+              <td class="text-center align-middle" colspan="8">No data</td>
+            </tr>
+            <tr *ngFor="let item of departmentList; let i = index">
+              <td class="text-center">
+                <div class="custom-control custom-checkbox align-middle">
+                  <input type="checkbox" class="custom-control-input">
+                  <label class="custom-control-label m-cursor"></label>
+                </div>
+              </td>
+              <td class="align-middle">{{item?.code}}</td>
+              <td class="align-middle">{{item?.name}}</td>
+              <td class="align-middle">{{item?.nameEn}}</td>
+              <td class="align-middle">{{item?.creater}}</td>
+              <td class="align-middle text-center">{{item?.createdDate | date: 'dd/MM/yyyy'}}</td>
+              <td class="align-middle">{{item?.unit}}</td>
+              <td class="align-middle text-center">{{item?.status ? 'Hoạt động' : 'Không hoạt động'}}</td>
+              <td class="align-middle text-center">
+                <span class="text-info m-cursor" (click)="openCreateModal(item)">
+                  <i class="fas fa-pencil-alt"></i>
+                </span>
+                <span class="text-danger  m-cursor ml-1" (click)="deletedDepartment(item)">
+                  <i class="far fa-trash-alt"></i>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

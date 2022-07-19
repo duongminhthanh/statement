@@ -1,0 +1,125 @@
+<div class="container-fluid">
+  <app-page-title title="Working Date" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+
+  <div class="row">
+    <div class="col-12 card-box">
+      <fieldset class="{{!isCollapsed ? 'pb-0' : ''}}">
+        <legend>
+          <a href="javascript: void(0);" (click)="isCollapsed = !isCollapsed">Search Information
+            <i class="{{isCollapsed ? 'fe-minus' : 'fe-plus'}} ml-1" aria-hidden="true"></i>
+          </a>
+        </legend>
+        <div *ngIf="isCollapsed">
+          <div class="row mb-2">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-1">
+              <label class="col-form-label form-control-label font-weight-bolder">
+                Code
+              </label>
+              <div class="mt-1" id="selectTypeLog">
+                <input type="text" class="form-control" placeholder="Search...">
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-1">
+              <label class="col-form-label form-control-label font-weight-bolder">
+                Name
+              </label>
+              <div class="mt-1" id="selectTypeLog">
+                <input type="text" class="form-control" placeholder="Search...">
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-1">
+              <label class="col-form-label form-control-label font-weight-bolder">
+                Date
+              </label>
+              <div class="input-group clockpicker">
+                <input ngbDatepicker class="form-control" autoClose="false" placeholder="dd-mm-yyyy"
+                  #date="ngbDatepicker">
+                <div class="input-group-append" (click)="date.toggle()">
+                  <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-7 text-left">
+              <button type="button" class="btn btn-primary mt-1 mr-1" (click)="openCreateModal(null)">
+                <i class="fas fa-plus mr-1"></i>Create
+              </button>
+            </div>
+            <div class="col-5 text-right">
+
+              <button type="button" class="btn btn-secondary mr-1 mt-1">
+                <i class="fas fa-undo-alt mr-1"></i>Refresh
+              </button>
+              <button type="button" class="btn btn-primary mt-1"><i class="fas fa-search mr-1"></i>Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div class="col-12 border-bottom-dotted pb-0 p-0 mb-2 mt-3">
+        <span class="font-weight-medium theme-color">Working date list</span>
+      </div>
+      <div class="table-responsive">
+        <!-- <app-ui-preloader [display]="loading"></app-ui-preloader> -->
+        <!-- <h4 class="header-title mb-3">File list</h4> -->
+        <table class="table table-bordered table-sm table-hover m-w-tabble">
+          <thead>
+            <tr class="m-header-table">
+              <th class="text-center align-middle">
+                <div class="custom-control custom-checkbox  text-center align-middle">
+                  <input type="checkbox" class="custom-control-input m-cursor" id="checkAll">
+                  <label class="custom-control-label m-cursor" for="checkAll"></label>
+                </div>
+              </th>
+              <th class="text-center align-middle">Code</th>
+              <th class="text-center align-middle">Name</th>
+              <th class="text-center align-middle">From date</th>
+              <th class="text-center align-middle">To date</th>
+              <th class="text-center align-middle">Description</th>
+              <th class="text-center align-middle">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+                      <td class="text-center align-middle" colspan="8">No data</td>
+                    </tr> -->
+            <tr>
+              <td class="text-center">
+                <div class="custom-control custom-checkbox align-middle">
+                  <input type="checkbox" class="custom-control-input">
+                  <label class="custom-control-label m-cursor"></label>
+                </div>
+              </td>
+              <td class="align-middle">W0001</td>
+              <td class="align-middle">National Day</td>
+              <td class="align-middle text-center">02/09/2021</td>
+              <td class="align-middle text-center">09/09/2021</td>
+              <td class="align-middle text-center">Lễ quốc khánh</td>
+              <td class="align-middle text-center">
+                <span class="text-info"><i class="fas fa-pencil-alt"></i></span>
+                <span class="text-danger ml-1"><i class="far fa-trash-alt"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center">
+                <div class="custom-control custom-checkbox align-middle">
+                  <input type="checkbox" class="custom-control-input">
+                  <label class="custom-control-label m-cursor"></label>
+                </div>
+              </td>
+              <td class="align-middle">W0002</td>
+              <td class="align-middle">Lunar new year</td>
+              <td class="align-middle text-center">01/02/2022</td>
+              <td class="align-middle text-center">10/02/2022</td>
+              <td class="align-middle text-center">Tết nguyên đán</td>
+              <td class="align-middle text-center">
+                <span class="text-info"><i class="fas fa-pencil-alt"></i></span>
+                <span class="text-danger ml-1"><i class="far fa-trash-alt"></i></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

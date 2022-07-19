@@ -1,0 +1,98 @@
+<div class="container-fluid">
+	<app-page-title title="Import Files" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+	<div class="row">
+	  <div class="col-12">
+		<div class="col-12 card-box">
+		  <fieldset class="{{!isCollapsed ? 'pb-0' : ''}}">
+			<legend>
+			  <a href="javascript: void(0);" (click)="isCollapsed = !isCollapsed">Search Information
+				<i class="{{isCollapsed ? 'fe-minus' : 'fe-plus'}} ml-1" aria-hidden="true"></i>
+			  </a>
+			</legend>
+			<div *ngIf="isCollapsed">
+			  <div class="row mb-2">
+				<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1" id="selectTypeLog">
+				  <label for="" class="font-weight-bolder">File Type</label>
+				  <ng-select>
+					<ng-option>All</ng-option>
+					<ng-option>Fixed-Length File</ng-option>
+					<ng-option>Delimited Flat File</ng-option>
+					<ng-option>Excel File</ng-option>
+				  </ng-select> 
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+				  <label for="" class="font-weight-bolder">Group</label>
+				 <ng-select>
+					<ng-option>All</ng-option>
+					<ng-option>Default</ng-option>
+					<ng-option>SBV_COLLATERAL_INDIVIDUAL</ng-option>
+					<ng-option>SBV_COLLATERAL_CORP</ng-option>
+					<ng-option>SBV_COLLATERAL_INDIVIDUAL</ng-option>
+					<ng-option>SBV_COLLATERAL_CORP</ng-option>
+				  </ng-select>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+				  <label for="" class="font-weight-bolder">Term</label>
+				  <ng-select>
+					<ng-option>All</ng-option>
+					<ng-option>Daily</ng-option>
+					<ng-option>Thrice-Monthly</ng-option>
+					<ng-option>Half-Monthly</ng-option>
+					<ng-option>Monthly</ng-option>
+					<ng-option>Quaterly</ng-option>
+					<ng-option>Mid-Year</ng-option>
+					<ng-option>Yearly</ng-option>
+					<ng-option>AdHoc</ng-option>
+					<ng-option>Weekly</ng-option>
+					<ng-option>Half-Yearly</ng-option>
+				  </ng-select>
+				  
+				</div>
+				<div class="col-sm-12 mt-1">
+				  <label for="" class="font-weight-bolder">Keyword</label>
+				  <input type="text" class="form-control" placeholder="Search...">
+			  </div>
+			</div>
+			<div class="row">
+				<div class="col-7 text-left">
+					<button type="button" class="btn btn-primary mr-1 mt-1">
+						<i class="fas fa-upload mr-1"></i>New Import File
+					</button>
+					<button type="button" class="btn btn-primary mr-1 mt-1">
+						<i class="fas fa-arrows-alt-v mr-1"></i>Reorder
+					</button>
+				</div>
+				<div class="col-5 text-right">
+					<button type="button" class="btn btn-primary mt-1 mr-1"><i
+							class="fas fa-search mr-1"></i>Search
+					</button>
+				</div>
+			</div>
+			</div>
+		  </fieldset>
+		  <div class="col-12 border-bottom-dotted pb-0 p-0 mb-2 mt-3">
+			<span class="font-weight-medium theme-color">File list</span>
+		  </div>
+		  <div class="table-responsive">
+			  <table class="table table-bordered table-sm table-hover m-w-tabble">
+				  <thead>
+					  <tr class="m-header-table">
+						  <th class="text-center align-middle">Actions</th>
+						  <th class="text-center align-middle m-min-w-5-5">File mask</th>
+						  <th class="text-center align-middle m-min-w-5-5">File type</th>
+						  <th class="text-center align-middle">Term</th>
+						  <th class="text-center align-middle m-min-w-5-5">Group</th>
+						  <th class="text-center align-middle m-min-w-2-5">Table Name</th>
+						  <th class="text-center align-middle m-min-w-2-5">Description</th>
+						  <th class="text-center align-middle">Last modified</th>
+					  </tr>
+				  </thead>
+				<tbody>
+					<td class="text-center align-middle" colspan="8">No data available in table</td>
+				</tbody>
+			  </table>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>

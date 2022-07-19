@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <app-page-title title="Pricing" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+
+  <div class="row justify-content-center">
+    <div class="col-xl-12">
+
+      <!-- Pricing Title-->
+      <div class="text-center pb-2">
+        <h3 class="mb-2">Our <span class="text-primary">Plans</span></h3>
+        <p class="text-muted w-50 m-auto">
+          We have plans and prices that fit your business perfectly. Make your client site a success with our products.
+        </p>
+      </div>
+
+      <!-- Plans -->
+      <div class="row my-3">
+        <div class="col-xl-3 col-md-6" *ngFor="let price of pricingData">
+          <div class="card card-pricing" [ngClass]="{ 'ribbon-box': price.ribbon === 'Popular' }">
+            <div class="ribbon-two ribbon-two-danger" *ngIf="price.ribbon === 'Popular'"><span>Popular</span></div>
+            <div class="card-body text-center">
+              <p class="card-pricing-plan-name font-weight-bold text-uppercase">{{price.title}}</p>
+              <span class="card-pricing-icon" [ngClass]="{ 'bg-danger': price.ribbon === 'Popular',
+                                                                      'text-primary': price.ribbon !== 'Popular',
+                                                                      'text-white': price.ribbon === 'Popular'} ">
+                <i class="{{price.icon}}"></i>
+              </span>
+              <h2 class="card-pricing-price">{{price.price}}<span>/ Month</span></h2>
+              <ul class="card-pricing-features">
+                <li>{{price.storage}} GB Storage</li>
+                <li>{{price.bandwidth}}</li>
+                <li>{{price.domain}}</li>
+                <li>{{price.user}}</li>
+                <li>Email Support</li>
+                <li>24x7 Support</li>
+              </ul>
+              <button class="btn btn-primary waves-effect waves-light mt-4 btn-block"
+                [ngClass]="{ 'btn-danger': price.ribbon === 'Popular' } ">Sign Up</button>
+            </div>
+          </div> <!-- end Pricing_card -->
+        </div> <!-- end col -->
+
+      </div>
+    </div>
+  </div>

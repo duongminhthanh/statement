@@ -1,0 +1,55 @@
+<div class="container-fluid">
+	<app-page-title title="Manage Document"></app-page-title>
+	<div class="row">
+	  <div class="col-12 card-box">
+		<fieldset class="{{!isCollapsed ? 'pb-0' : ''}}">
+			<legend>
+			  <a href="javascript: void(0);" (click)="isCollapsed = !isCollapsed">Search Information
+				<i class="{{isCollapsed ? 'fe-minus' : 'fe-plus'}} ml-1" aria-hidden="true"></i>
+			  </a>
+			</legend>
+			<div *ngIf="isCollapsed">
+			  <div class="row mb-2">
+				<div class="col-sm-12 mt-1">
+				  <label class="col-form-label form-control-label font-weight-bolder">
+					Keyword
+				  </label>
+				  <div class="mt-1" id="selectTypeLog">
+					<input type="text" class="form-control" placeholder="Search...">
+				  </div>
+				</div>
+			  </div>
+			  <div class="row">
+				<div class="col-7 text-left">
+				  <button type="button" class="btn btn-primary mt-1 mr-1" (click)="openCreateModal()">
+					<i class="fas fa-plus mr-1"></i>Upload document
+				  </button>
+				</div>
+				<div class="col-5 text-right">
+				  <button type="button" class="btn btn-primary mt-1">
+					<i class="fas fa-search mr-1"></i>Search
+				  </button>
+				</div>
+			  </div>
+			</div>
+		  </fieldset>
+		  <div class="col-12 border-bottom-dotted pb-0 p-0 mb-2 mt-3">
+			<span class="font-weight-medium theme-color">Document list</span>
+		  </div>
+		  <div class="table-responsive">
+			<table class="table table-bordered table-sm table-hover m-w-tabble">
+			  <thead>
+				<tr class="m-header-table">
+				  <th class="text-center align-middle">Action</th>
+				  <th class="text-center align-middle">File name</th>
+				  <th class="text-center align-middle">Checksum</th>
+				  <th class="text-center align-middle">Last Modified</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<td class="text-center align-middle" colspan="5">No data available in table</td>
+			</tbody>
+			</table>
+		  </div>
+		</div>
+	</div>

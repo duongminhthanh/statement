@@ -1,0 +1,8 @@
+::ng-deep {
+  @media screen and (max-width: 425px) {
+    .fc-toolbar {
+      display: block !important;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "/api/e-statement/*": {
+    "target": "http://localhost:8902",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

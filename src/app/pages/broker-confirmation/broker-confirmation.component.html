@@ -1,0 +1,209 @@
+<div class="container-fluid">
+	<app-page-title title="Broker Confirmation" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+	<div class="row">
+	  <div class="col-12">
+		<div class="col-12 card-box">
+		  <fieldset class="{{!isCollapsed ? 'pb-0' : ''}}">
+			<legend>
+			  <a href="javascript: void(0);" (click)="isCollapsed = !isCollapsed">Search Information
+				<i class="{{isCollapsed ? 'fe-minus' : 'fe-plus'}} ml-1" aria-hidden="true"></i>
+			  </a>
+			</legend>
+			<div *ngIf="isCollapsed">
+			  <div class="row mb-2">
+				<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+					<label for="" class="font-weight-bolder">Trading code</label>
+					<input type="text" class="form-control">
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1" id="selectTypeLog">
+					<label for="" class="font-weight-bolder">SCA</label>
+					<ng-select>
+					  <ng-option>984233</ng-option>
+					  <ng-option>231468</ng-option>
+					  <ng-option>249729</ng-option>
+					  <ng-option>734958</ng-option>
+					  <ng-option>870103</ng-option>
+					  <ng-option>403913</ng-option>
+					  <ng-option>893770</ng-option>
+					</ng-select> 
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+					<label for="" class="font-weight-bolder">Client name</label>
+					<input type="text" class="form-control">
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+					<label for="" class="font-weight-bolder">Broker code</label>
+					<input type="text" class="form-control">
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+					<label for="" class="font-weight-bolder">Broker name</label>
+					<input type="text" class="form-control">
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+					<label for="" class="font-weight-bolder">Assigned to</label>
+					<input type="text" class="form-control">
+				</div>
+				  <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1" id="selectTypeLog">
+					<label for="" class="font-weight-bolder">Sec code</label>
+					<ng-select>
+					  <ng-option>ACB</ng-option>
+					  <ng-option>BID</ng-option>
+					  <ng-option>BVH</ng-option>
+					  <ng-option>FPT</ng-option>
+					  <ng-option>HDB</ng-option>
+					  <ng-option>HPG</ng-option>
+					  <ng-option>NVL</ng-option>
+					  <ng-option>PLX</ng-option>
+					</ng-select> 
+				  </div>
+				<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+					<label for="" class="font-weight-bolder">Beginning Available Balance</label>
+					<input type="text" class="form-control">
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+					<label for="" class="font-weight-bolder">Receivable Balance</label>
+					<input type="text" class="form-control">
+				</div>
+				  <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+					<label for="" class="font-weight-bolder">Quantity Earmarked</label>
+					<input type="text" class="form-control">
+				</div>
+				  <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+					<label for="" class="font-weight-bolder">Current Available Balance</label>
+					<input type="text" class="form-control">
+				</div>
+				  <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-1">
+					<label for="" class="font-weight-bolder">Remark</label>
+					<input type="text" class="form-control">
+				</div>
+				<div class="col-sm-12 mt-1">
+				  <label for="" class="font-weight-bolder">Keyword</label>
+				  <input type="text" class="form-control" placeholder="Search...">
+				</div>
+			</div>
+			<div ngbDropdown class="row">
+				<div class="col-7 text-left">
+					<button type="button" class="btn btn-primary mr-1 mt-1">
+						<i class="fas fa-regular fa-lock mr-1"></i>Hold
+					</button>
+					<button type="button" class="btn btn-primary mr-1 mt-1">
+						<i class="fas fa-lock-open mr-1"></i>Release
+					</button>
+					<button class="btn btn-primary mr-1 mt-1" id="gfg" 
+						ngbDropdownToggle><i class="fas fa-regular fa-file-signature mr-1"></i>Review
+					</button>
+						<div ngbDropdownMenu="gfg">
+							<button ngbDropdownItem>
+								<i class="fas fa-regular fa-check-double mr-1"></i>Approve
+							</button>
+							<button ngbDropdownItem>
+								<i class="fas fa-regular fa-ban mr-1"></i>Reject
+							</button>
+						</div>
+				</div>
+				<div class="col-5 text-right">
+					<button type="button" class="btn btn-primary mr-1 mt-1">
+						<i class="fas fa-undo-alt mr-1"></i>Refresh
+					</button>
+					<button type="button" class="btn btn-primary mt-1 mr-1"><i
+							class="fas fa-search mr-1"></i>Search
+					</button>
+				</div>
+			</div>
+			</div>
+		  </fieldset>
+		  <div class="col-12 border-bottom-dotted pb-0 p-0 mb-2 mt-3">
+			<span class="font-weight-medium theme-color">File list</span>
+		  </div>
+		  <div class="table-responsive">
+			  <table class="table table-bordered table-sm table-hover m-w-tabble">
+				  <thead>
+					  <tr class="m-header-table">
+						  <th class="text-center align-middle">Broker code</th>
+						  <th class="text-center align-middle m-min-w-5-5">Broker name</th>
+						  <th class="text-center align-middle m-min-w-5-5">Recceivable indicator</th>
+						  <th class="text-center align-middle">Quantity Earmarked</th>
+						  <th class="text-center align-middle m-min-w-5-5">Sec code</th>
+						  <th class="text-center align-middle m-min-w-2-5">Status</th>
+						  <th class="text-center align-middle m-min-w-2-5">Remark</th>
+						  <th class="text-center align-middle">Inputter</th>
+						  <th class="text-center align-middle m-min-w-2-5">Verifier</th>
+						  <th class="text-center align-middle">Time earmarked</th>
+					  </tr>
+				  </thead>
+				  <tbody>
+					  <tr>
+						  <td class="text-center">
+							  <div class="custom-control custom-checkbox align-middle">
+								  <input type="checkbox" class="custom-control-input">
+								  <label class="custom-control-label m-cursor">VCSC</label>
+							  </div>
+						  </td>
+						  <td class="align-middle">Nguyen Tai Quang Khai</td>
+						  <td class="align-middle">N</td>
+						  <td class="align-middle">5,000</td>
+						  <td class="align-middle">MBB</td>
+						  <td class="align-middle text-center">Released</td>
+						  <td class="text-center align-middle"></td>
+						  <td class="text-center align-middle">1483997-Le Thuy Linh</td>
+						  <td class="text-center align-middle">1508558-Tran Thu Phuong</td>
+						  <td class="text-center align-middle">2:30:00 CH 27/12/2021</td>
+					  </tr>
+					  <tr>
+						<td class="text-center">
+							<div class="custom-control custom-checkbox align-middle">
+								<input type="checkbox" class="custom-control-input">
+								<label class="custom-control-label m-cursor">VCSC</label>
+							</div>
+						</td>
+						<td class="align-middle">Nguyen Danh Tuan</td>
+						<td class="align-middle">N</td>
+						<td class="align-middle">20,000</td>
+						<td class="align-middle">ACB</td>
+						<td class="align-middle text-center">Released To be Auth</td>
+						<td class="text-center align-middle">Release by Quang VCBS LinhGiang 1:45 PM</td>
+						<td class="text-center align-middle">1483997-Le Thuy Linh</td>
+						<td class="text-center align-middle">1508558-Tran Thu Phuong</td>
+						<td class="text-center align-middle">2:30:00 CH 27/12/2021</td>
+					</tr>
+					<tr>
+					  <td class="text-center">
+						  <div class="custom-control custom-checkbox align-middle">
+							  <input type="checkbox" class="custom-control-input">
+							  <label class="custom-control-label m-cursor">VCSC</label>
+						  </div>
+					  </td>
+					  <td class="align-middle">Nguyen Tai Quang Khai</td>
+					  <td class="align-middle">N</td>
+					  <td class="align-middle">10,000</td>
+					  <td class="align-middle">MBB</td>
+					  <td class="align-middle text-center">Earmarked To be Auth</td>
+					  <td class="text-center align-middle"></td>
+					  <td class="text-center align-middle">1483997-Le Thuy Linh</td>
+					  <td class="text-center align-middle">1508558-Tran Thu Phuong</td>
+					  <td class="text-center align-middle">2:30:00 CH 27/12/2021</td>
+				  </tr>
+				  <tr>
+					<td class="text-center">
+						<div class="custom-control custom-checkbox align-middle">
+							<input type="checkbox" class="custom-control-input">
+							<label class="custom-control-label m-cursor">VCSC</label>
+						</div>
+					</td>
+					<td class="align-middle">Nguyen Tai Quang Khai</td>
+					<td class="align-middle">N</td>
+					<td class="align-middle">30,000</td>
+					<td class="align-middle">HPG</td>
+					<td class="align-middle text-center">Earmarked</td>
+					<td class="text-center align-middle"></td>
+					<td class="text-center align-middle">1483997-Le Thuy Linh</td>
+					<td class="text-center align-middle">1508558-Tran Thu Phuong</td>
+					<td class="text-center align-middle">2:30:00 CH 27/12/2021</td>
+				</tr>
+				  </tbody>
+			  </table>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>

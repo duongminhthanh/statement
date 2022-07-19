@@ -1,0 +1,202 @@
+<!-- ========== Left Sidebar Start ========== -->
+<ng-template #contentTemplate>
+    <!--- Sidemenu -->
+    <div id="sidebar-menu">
+        <ul class="metismenu" id="side-menu" #sideMenu>
+
+            <li class="menu-title">Danh sách chức năng</li>
+
+            <li>
+                <a href="javascript: void(0);" class="waves-effect" routerLink="/dashboard/dashboard2">
+                    <i class="remixicon-dashboard-line"></i>
+                    <span> Dashboard </span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript: void(0);" class="waves-effect">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span> Import Management </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="nav-second-level" aria-expanded="false">
+                    <li>
+                        <a routerLink="/import-management/import-data" class="side-nav-link-ref" routerLinkActive="active">Import data</a>
+                    </li>
+                    <li>
+                        <a routerLink="/import-management/import-log" class="side-nav-link-ref" routerLinkActive="active">Import log</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="javascript: void(0);" class="waves-effect">
+                    <i class="fas fa-cogs"></i>
+                    <span> Mapping Management </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="nav-second-level" aria-expanded="false">
+                    <li>
+                        <a routerLink="/mapping-management/mapping-data" class="side-nav-link-ref" routerLinkActive="active">Mapping data</a>
+                    </li>
+                    <li>
+                        <a routerLink="/mapping-management/mapping-log" class="side-nav-link-ref" routerLinkActive="active">Report log</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a routerLink="/data-management" class="waves-effect side-nav-link-ref" routerLinkActive="active">
+                    <i class="remixicon-vip-crown-2-line"></i>
+                    <span> Data Management </span>
+                </a>
+            </li>
+			<li>
+                <a routerLink="/batch-management/v1" class="waves-effect side-nav-link-ref" routerLinkActive="active">
+                    <i class="remixicon-vip-crown-2-line"></i>
+                    <span> Batch Management </span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript: void(0);" class="waves-effect">
+                    <i class="fas fa-chart-bar"></i>
+                    <span> Report Management </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="nav-second-level" aria-expanded="false">
+                    <li>
+                        <a routerLink="/report-management/report-create" class="side-nav-link-ref" routerLinkActive="active">Report create</a>
+                    </li>
+                    <li>
+                        <a routerLink="/report-management/report-approve" class="side-nav-link-ref" routerLinkActive="active">Report approve</a>
+                    </li>
+                    <li>
+                        <a routerLink="/report-management/report-search" class="side-nav-link-ref" routerLinkActive="active">Report search</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-title mt-2">Quản trị hệ thống</li>
+            <li>
+                <a href="javascript: void(0);" class="waves-effect">
+                    <i class="remixicon-briefcase-5-line"></i>
+                    <span>  Administration</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="nav-second-level" aria-expanded="false">
+                    <li>
+                        <a routerLink="/administration/department-management" class="side-nav-link-ref" routerLinkActive="active">Department Management</a>
+                    </li>
+                    
+                    <li>
+                        <a routerLink="/administration/group-management" class="side-nav-link-ref" routerLinkActive="active">Group Management</a>
+                    </li>
+                    <li>
+                        <a routerLink="/administration/user-management" class="side-nav-link-ref" routerLinkActive="active">User Management</a>
+                    </li>
+                    <li>
+                        <a routerLink="/administration/user-demo2" class="side-nav-link-ref" routerLinkActive="active">User Demo2</a>
+                    </li>
+                    <li>
+                        <a routerLink="/administration/unit-management" class="side-nav-link-ref" routerLinkActive="active">Unit Management</a>
+                    </li>
+                    
+                    <li>
+                        <a href="javascript: void(0);" class="waves-effect">
+                            <span>Config Management</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a routerLink="/administration/config-management/paramater-config" class="side-nav-link-ref" routerLinkActive="active">Paramater Config</a>
+                            </li>
+                            <li>
+                                <a routerLink="/administration/config-management/calendar-management" class="side-nav-link-ref" routerLinkActive="active">Calendar Management</a>
+                            </li>
+                            <li>
+                                <a routerLink="/administration/config-management/working-date" class="side-nav-link-ref" routerLinkActive="active">Working Date</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+			<li>
+                <a href="javascript: void(0);" class="waves-effect">
+                    <i class="fas fa-chart-bar"></i>
+                    <span> System Definition </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="nav-second-level" aria-expanded="false">
+                    <li>
+                        <a href="javascript: void(0);" class="waves-effect">
+							<i class="fas fa-chart-bar"></i>
+							<span> File Management </span>
+							<span class="menu-arrow"></span>
+						</a>
+						<ul class="nav-second-level" aria-expanded="false">
+							<li>
+								<a routerLink="/fomart-file" class="side-nav-link-ref" routerLinkActive="active">Format File</a>
+								<a routerLink="/report-template-file" class="side-nav-link-ref" routerLinkActive="active">Report Template File</a>
+								<a routerLink="/report-validation-file" class="side-nav-link-ref" routerLinkActive="active">Report Validation File</a>
+								<a routerLink="/document" class="side-nav-link-ref" routerLinkActive="active">Document</a>
+							</li>
+						</ul>
+                    </li>
+                    <li>
+                        <a routerLink="/procedure-management" class="side-nav-link-ref" routerLinkActive="active">Proceduce Management</a>
+                    </li>
+					<li>
+                        <a routerLink="/table-management" class="side-nav-link-ref" routerLinkActive="active">Table Management</a>
+						<a routerLink="/define-import-file" class="side-nav-link-ref" routerLinkActive="active">Define Import File</a>
+						<a routerLink="/define-batch-process" class="side-nav-link-ref" routerLinkActive="active">Define Batch Process</a>
+					</li>
+					<li>
+						<a href="javascript: void(0);" class="waves-effect">
+							<i class="fas fa-chart-bar"></i>
+							<span> Define Report </span>
+							<span class="menu-arrow"></span>
+						</a>
+						<ul class="nav-second-level" aria-expanded="false">
+							<li>
+								<a routerLink="/report" class="side-nav-link-ref" routerLinkActive="active">Report</a>
+								<a routerLink="/validation" class="side-nav-link-ref" routerLinkActive="active">Validation</a>
+							</li>
+						</ul>
+						<a routerLink="/define-data-query" class="side-nav-link-ref" routerLinkActive="active">Define Data Query</a>
+						<a routerLink="/define-data-editor" class="side-nav-link-ref" routerLinkActive="active">Define Data Editor</a>
+						<a routerLink="/task-scheduler" class="side-nav-link-ref" routerLinkActive="active">Task Scheduler</a>
+                    </li>
+                </ul>
+            </li>
+			<li>
+                <a href="javascript: void(0);" class="waves-effect" routerLink="/broker-confirmation">
+                    <i class="remixicon-dashboard-line"></i>
+                    <span> Broker Confirmation </span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript: void(0);" class="waves-effect" routerLink="/abc-management">
+                    <i class="remixicon-dashboard-line"></i>
+                    <span> ABC </span>
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+    <!-- End Sidebar -->
+
+    <div class="clearfix"></div>
+</ng-template>
+
+
+<div class="left-side-menu">
+
+    <div class="slimscroll-menu" appSlimScroll *ngIf="!isCondensed">
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </div>
+
+    <div class="slimscroll-menu" *ngIf="isCondensed">
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </div>
+
+</div>
+<!-- Left Sidebar End -->
